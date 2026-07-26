@@ -1,0 +1,4 @@
+.DS_Store
+.env
+agent-ops-lab
+coverage.out
