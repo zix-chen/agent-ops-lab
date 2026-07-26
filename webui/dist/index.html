@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A production-minded AI incident response simulator.">
+    <title>Agent Ops Lab</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="topbar shell">
+      <a class="brand" href="/" aria-label="Agent Ops Lab home">
+        <span class="brand-mark">A</span>
+        <span>
+          <strong>Agent Ops Lab</strong>
+          <small>RELIABILITY CONTROL PLANE</small>
+        </span>
+      </a>
+      <div class="system-state">
+        <span class="status-dot"></span>
+        <span>deterministic demo</span>
+        <button class="ghost-button" id="reset-button" type="button">Reset lab</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div class="eyebrow">INCIDENT RESPONSE · POLICY · EVALUATION</div>
+        <h1>AI agents need a<br><span>seatbelt.</span></h1>
+        <p class="hero-copy">
+          A runnable reliability lab for agentic incident response—bounded retries,
+          circuit breaking, human approval, injection defense and a complete audit trail.
+        </p>
+        <div class="hero-actions">
+          <button class="primary-button" id="run-default-button" type="button">
+            Run live incident
+            <span aria-hidden="true">→</span>
+          </button>
+          <button class="secondary-button" id="evaluate-button" type="button">
+            Run evaluation suite
+          </button>
+        </div>
+      </section>
+
+      <section class="metric-grid" aria-label="Reliability metrics">
+        <article class="metric-card">
+          <span>Runs observed</span>
+          <strong id="metric-runs">0</strong>
+          <small>idempotent workflow executions</small>
+        </article>
+        <article class="metric-card">
+          <span>Safe outcomes</span>
+          <strong id="metric-safe">0</strong>
+          <small>resolved or approval gated</small>
+        </article>
+        <article class="metric-card">
+          <span>Retries contained</span>
+          <strong id="metric-retries">0</strong>
+          <small>bounded dependency attempts</small>
+        </article>
+        <article class="metric-card">
+          <span>Circuit breaker</span>
+          <strong class="metric-state" id="metric-circuit">CLOSED</strong>
+          <small>provider failure isolation</small>
+        </article>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <div>
+            <span class="section-index">01</span>
+            <h2>Choose a failure mode</h2>
+          </div>
+          <p>Each scenario exercises a different production guardrail.</p>
+        </div>
+        <div class="scenario-grid" id="scenario-grid">
+          <div class="loading-card">Loading scenarios…</div>
+        </div>
+      </section>
+
+      <section class="workspace-grid section-block">
+        <div class="run-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="section-index">02</span>
+              <h2>Execution trace</h2>
+            </div>
+            <button class="replay-button" id="replay-button" type="button" disabled>
+              Replay same alert
+            </button>
+          </div>
+
+          <div class="empty-state" id="empty-run">
+            <div class="empty-icon">↯</div>
+            <h3>No incident selected</h3>
+            <p>Run a scenario to watch the agent make evidence-backed decisions.</p>
+          </div>
+
+          <div class="run-detail hidden" id="run-detail">
+            <div class="run-summary">
+              <div>
+                <div class="run-meta">
+                  <span id="run-id">run_000001</span>
+                  <span id="run-service">checkout-api</span>
+                </div>
+                <h3 id="run-diagnosis"></h3>
+              </div>
+              <span class="verdict" id="run-verdict"></span>
+            </div>
+            <div class="recommendation">
+              <span>Recommended next action</span>
+              <p id="run-recommendation"></p>
+              <div class="confidence">
+                <span>Confidence</span>
+                <div class="confidence-track"><i id="confidence-fill"></i></div>
+                <strong id="confidence-value"></strong>
+              </div>
+            </div>
+            <ol class="timeline" id="timeline"></ol>
+          </div>
+        </div>
+
+        <aside class="evaluation-panel">
+          <div class="panel-heading compact">
+            <div>
+              <span class="section-index">03</span>
+              <h2>Evaluation gate</h2>
+            </div>
+          </div>
+          <div class="score-ring" id="score-ring">
+            <div>
+              <strong id="score-value">—</strong>
+              <span>pass rate</span>
+            </div>
+          </div>
+          <p class="evaluation-copy" id="evaluation-copy">
+            Run the deterministic regression suite before changing prompts, tools or policies.
+          </p>
+          <div class="evaluation-cases" id="evaluation-cases"></div>
+        </aside>
+      </section>
+
+      <section class="principles section-block">
+        <div class="section-heading">
+          <div>
+            <span class="section-index">04</span>
+            <h2>Built for accountable automation</h2>
+          </div>
+        </div>
+        <div class="principle-grid">
+          <article>
+            <span>01</span>
+            <h3>Deterministic safety</h3>
+            <p>Policy gates stay outside the LLM so risky actions cannot be prompted into existence.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Failure containment</h3>
+            <p>Retry budgets, idempotency and circuit breaking make dependency failure predictable.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Evidence over vibes</h3>
+            <p>Every decision carries telemetry, confidence, an audit event and a regression case.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <span>Agent Ops Lab · Go · zero dependencies</span>
+      <span>Built to fail safely.</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>
